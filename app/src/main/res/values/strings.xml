@@ -1,0 +1,38 @@
+<resources>
+
+    <string name="MosPizza">Mos Pizza</string>
+
+    <string name="EnterInfoLabel">Enter Pizza Information:</string>
+
+    <string name="addButton">+</string>
+    <string name="removeButton">-</string>
+
+    <string name="amountSausage">0</string>
+    <string name="amountPeperoni">0</string>
+    <string name="amountBacon">0</string>
+    <string name="amountMushroom">0</string>
+    <string name="amountChicken">0</string>
+    <string name="amountSalami">0</string>
+    <string name="amountDonair">0</string>
+
+    <string name="app_name">MosPizzaStore</string>
+    <string name="LanguageToggleLabel">Farsi</string>
+    <string name="ToppingSausage">Sausage</string>
+    <string name="ToppingPeperoni">Peperoni</string>
+    <string name="ToppingBacon">Bacon</string>
+    <string name="ToppingMushrooms">Mushrooms</string>
+    <string name="ToppingChicken">Chicken</string>
+    <string name="ToppingSalami">Salami</string>
+    <string name="ToppingDonair">Donair</string>
+
+    <string name="SizeSmall">Small</string>
+    <string name="SizeMedium">Medium</string>
+    <string name="SizeLarge">Large</string>
+
+    <string name="CustomerName"></string>
+    <string name="CustomerAddress"></string>
+    <string name="CustomerPhoneNumber"></string>
+
+    <string name="SubmitOrder">Submit Order</string>
+
+</resources>

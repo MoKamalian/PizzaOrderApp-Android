@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="FEnterInfoLabel">اطلاعات پیتزا را وارد کنید:</string>
+
+    <string name="FLanguageToggleLabel">English</string>
+    <string name="FToppingSausage">سوسیس</string>
+    <string name="FToppingPeperoni">پپرونی</string>
+    <string name="FToppingBacon">بیکن</string>
+    <string name="FToppingMushrooms">قارچ</string>
+    <string name="FToppingChicken">جوجه</string>
+    <string name="FToppingSalami">سلامی</string>
+    <string name="FToppingDonair">دونیر</string>
+
+    <string name="FSizeSmall">کم اهمیت</string>
+    <string name="FSizeMedium">متوسط</string>
+    <string name="FSizeLarge">بزرگ</string>
+
+    <string name="FCustomerName">نام را وارد کنید</string>
+    <string name="FCustomerAddress">آدرس خود را وارد کنید</string>
+    <string name="FCustomerPhoneNumber">شماره تلفن را وارد کنید</string>
+
+    <string name="FSubmitOrder">ثبت درخواست</string>
+
+</resources>
