@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#A6A5A1">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/order_id"
+                    android:layout_width="379dp"
+                    android:layout_height="15dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="15dp"
+                    android:background="#638CDF"
+                    android:paddingLeft="5dp"
+                    android:text="TextView"
+                    android:textColor="#040404"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/Cname"
+                    android:layout_width="180dp"
+                    android:layout_height="22dp"
+                    android:layout_marginLeft="15dp"
+                    android:background="#48649F"
+                    android:paddingLeft="5dp"
+                    android:text="TextView"
+                    android:textColor="#FFFFFF"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/order_id" />
+
+                <TextView
+                    android:id="@+id/Cphone"
+                    android:layout_width="180dp"
+                    android:layout_height="22dp"
+                    android:layout_marginLeft="15dp"
+                    android:background="#48649F"
+                    android:paddingLeft="5dp"
+                    android:text="TextView"
+                    android:textColor="#FFFFFF"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/Cname" />
+
+                <TextView
+                    android:id="@+id/Caddress"
+                    android:layout_width="180dp"
+                    android:layout_height="22dp"
+                    android:layout_marginLeft="15dp"
+                    android:background="#48649F"
+                    android:paddingLeft="5dp"
+                    android:text="TextView"
+                    android:textColor="#FFFFFF"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/Cphone" />
+
+                <TextView
+                    android:id="@+id/toppingOne"
+                    android:layout_width="195dp"
+                    android:layout_height="22dp"
+                    android:layout_marginRight="15dp"
+                    android:background="#E6D4A7"
+                    android:paddingLeft="5dp"
+                    android:text="TextView"
+                    android:textColor="#000000"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/Caddress"
+                    app:layout_constraintTop_toBottomOf="@+id/toppingTwo" />
+
+                <TextView
+                    android:id="@+id/toppingTwo"
+                    android:layout_width="195dp"
+                    android:layout_height="22dp"
+                    android:layout_marginRight="15dp"
+                    android:background="#E6D4A7"
+                    android:paddingLeft="5dp"
+                    android:text="TextView"
+                    android:textColor="#000000"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/Cphone"
+                    app:layout_constraintTop_toBottomOf="@+id/toppingThree" />
+
+                <TextView
+                    android:id="@+id/toppingThree"
+                    android:layout_width="195dp"
+                    android:layout_height="22dp"
+                    android:layout_marginRight="15dp"
+                    android:background="#E6D4A7"
+                    android:paddingLeft="5dp"
+                    android:text="TextView"
+                    android:textColor="#000000"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/Cname"
+                    app:layout_constraintTop_toBottomOf="@+id/order_id" />
+
+                <TextView
+                    android:id="@+id/orderSize"
+                    android:layout_width="379dp"
+                    android:layout_height="wrap_content"
+                    android:background="#638CDF"
+                    android:text="TextView"
+                    android:textAlignment="center"
+                    android:textColor="#000000"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/Caddress" />
+
+                <Button
+                    android:id="@+id/editOrderButton"
+                    android:layout_width="125dp"
+                    android:layout_height="30dp"
+                    android:layout_marginEnd="50dp"
+                    android:backgroundTint="#476743"
+                    android:text="@string/EditButton"
+                    android:textSize="8sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/orderSize" />
+
+                <Button
+                    android:id="@+id/deleteOrderButton"
+                    android:layout_width="125dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginEnd="62dp"
+                    android:backgroundTint="#9A1D1D"
+                    android:text="@string/DeleteOrder"
+                    android:textSize="8sp"
+                    app:layout_constraintEnd_toStartOf="@+id/editOrderButton"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/orderSize" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

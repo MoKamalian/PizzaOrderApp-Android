@@ -35,4 +35,16 @@
 
     <string name="SubmitOrder">Submit Order</string>
 
+
+    <string name="SearchOrder">Search Order</string>
+    <string name="BackToOrder">Back</string>
+    <string name="SearchAll">Search All</string>
+
+
+
+
+    <string name="EditButton">Edit Order</string>
+    <string name="DeleteOrder">Delete Order</string>
+
+
 </resources>

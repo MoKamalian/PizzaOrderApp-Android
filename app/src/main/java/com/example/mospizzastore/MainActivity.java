@@ -3,6 +3,7 @@ package com.example.mospizzastore;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.content.Intent;
 
 import android.content.SharedPreferences;
 import android.view.View;
@@ -15,9 +16,11 @@ import android.widget.CompoundButton;
 import android.widget.Toast;
 
 import java.util.HashMap;
-import java.util.Arrays;
 
 public class MainActivity extends AppCompatActivity {
+
+    /** database interface object */
+    private DBInterface db_interface = new DBInterface(MainActivity.this);
 
     /** the list of toppings ordered */
     private HashMap<String, Integer> toppings_ordered = new HashMap<String, Integer>() {{
@@ -29,6 +32,8 @@ public class MainActivity extends AppCompatActivity {
         put("SALAMI", 0);
         put("DONAIR", 0);
     }};
+
+
 
     /** shared preferences object */
     private SharedPreferences shared_preferences;
@@ -88,9 +93,14 @@ public class MainActivity extends AppCompatActivity {
     private RadioButton size_medium_rb;
     private RadioButton size_large_rb;
 
+    private String size = "";
+
     /** language preference setting */
     public static final String LANGUAGE_PREFERENCE = "LANG_KEY";
     public static String LANGUAGE;
+
+    /** order search button */
+    private Button order_search;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,7 +109,6 @@ public class MainActivity extends AppCompatActivity {
 
         link_all_widgets();
         linkAddRemoveBtns();
-        onFocusChange();
 
         /** change language switch button */
         change_lang_switch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -132,21 +141,30 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if(checkOrder()) {
 
+                    db_interface.submitOrder(customer_name.getText().toString(),
+                                            customer_address.getText().toString(),
+                                            customer_phone.getText().toString(),
+                                            getToppings(),
+                                            getSizeSelected());
 
-
-
-                    /** here we would send off the information to the DBAdapter */
-                    System.out.println("true");
-
-
-
-
+                    clearOrderScreen();
+                    Toast order = Toast.makeText(MainActivity.this, "Order Submitted", Toast.LENGTH_LONG);
+                    order.show();
                 } else {
                     /** if there are no toppings, customer info is missing, or size is
                      * not selected */
                     Toast pop = Toast.makeText(MainActivity.this, "Missing info!", Toast.LENGTH_LONG);
                     pop.show();
                 }
+            };
+        });
+
+        /** searching for an order */
+        order_search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainActivity.this, OrdersActivity.class);
+                startActivity(i);
             };
         });
 
@@ -187,9 +205,7 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
-        System.out.println(Arrays.asList(toppings_ordered));
-
-    }
+    };
 
     /** Toppings button listener */
     public View.OnClickListener toppings_btns = new View.OnClickListener() {
@@ -218,6 +234,7 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.addButtonPeperoni:
                     changeCountDisplay(amount_peperoni, true, "PEPERONI");
                     break;
+
                 /** remove buttons */
                 case R.id.removeButtonSausage:
                     changeCountDisplay(amount_sausage, false, "SAUSAGE");
@@ -257,6 +274,9 @@ public class MainActivity extends AppCompatActivity {
             /** submit order button */
             submit_order.setText(R.string.SubmitOrder);
 
+            /** search order button */
+            order_search.setText(R.string.SearchOrder);
+
             /** customer info */
             customer_name.setText(R.string.CustomerName);
             customer_address.setText(R.string.CustomerAddress);
@@ -276,6 +296,8 @@ public class MainActivity extends AppCompatActivity {
             size_medium_rb.setText(R.string.SizeMedium);
             size_large_rb.setText(R.string.SizeLarge);
 
+            onFocusChange();
+
             size_small_rb.setTextAlignment(View.TEXT_ALIGNMENT_TEXT_START);
             size_medium_rb.setTextAlignment(View.TEXT_ALIGNMENT_TEXT_START);
             size_large_rb.setTextAlignment(View.TEXT_ALIGNMENT_TEXT_START);
@@ -290,10 +312,11 @@ public class MainActivity extends AppCompatActivity {
             /** submit order button */
             submit_order.setText(R.string.FSubmitOrder);
 
+            /** search order button */
+            order_search.setText(R.string.FSearchOrder);
+
             /** customer info */
-            customer_name.setText(R.string.FCustomerName);
-            customer_address.setText(R.string.FCustomerAddress);
-            customer_phone.setText(R.string.FCustomerPhoneNumber);
+            onFocusChangeFarsi();
 
             /** topping labels */
             topping_sausage.setText(R.string.FToppingSausage);
@@ -355,6 +378,9 @@ public class MainActivity extends AppCompatActivity {
         /** submit order button */
         submit_order = findViewById(R.id.submitOrder);
 
+        /** search for an order */
+        order_search = findViewById(R.id.searchOrder);
+
         /** customer info */
         customer_name = findViewById(R.id.customerName);
         customer_address = findViewById(R.id.customerAddress);
@@ -406,6 +432,13 @@ public class MainActivity extends AppCompatActivity {
         customer_phone.setHint("Enter Phone Number");
     };
 
+    public void onFocusChangeFarsi() {
+        customer_name.setHint(R.string.FCustomerName);
+        customer_address.setHint(R.string.FCustomerAddress);
+        customer_phone.setHint(R.string.FCustomerPhoneNumber);
+    };
+
+
     /** checks if at minimum one topping has been ordered, customer info
      * fields are filled out, and pizza size has been selected */
     private boolean checkOrder() {
@@ -442,10 +475,58 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
+    /** clears the entire order screen to default values */
+    private void clearOrderScreen() {
+        amount_sausage.setText("0");
+        amount_salami.setText("0");
+        amount_bacon.setText("0");
+        amount_chicken.setText("0");
+        amount_donair.setText("0");
+        amount_mushroom.setText("0");
+        amount_peperoni.setText("0");
 
+        customer_name.setText("");
+        customer_phone.setText("");
+        customer_address.setText("");
 
+        size_small_rb.setChecked(false);
+        size_large_rb.setChecked(false);
+        size_medium_rb.setChecked(false);
+    };
+
+    /** method grabs all the toppings in a single string format */
+    private String getToppings() {
+        String t = "";
+        for(String topping : toppings_ordered.keySet()) {
+            if(toppings_ordered.get(topping) > 0) {
+                t += (topping + ",").repeat(toppings_ordered.get(topping));
+            }
+        }
+
+        return t;
+    };
+
+    /** gets the size of the pizza selected */
+    private String getSizeSelected() {
+        if(size_small_rb.isChecked()) {
+            return "SMALL";
+        } else if(size_medium_rb.isChecked()) {
+            return "MEDIUM";
+        } else if(size_large_rb.isChecked()) {
+            return "LARGE";
+        } else {
+            return "";
+        }
+    };
 
 };
+
+
+
+
+
+
+
 
 
 

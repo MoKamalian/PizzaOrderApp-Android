@@ -22,4 +22,8 @@
 
     <string name="FSubmitOrder">ثبت درخواست</string>
 
+    <string name="FSearchOrder">ترتیب جستجو</string>
+    <string name="FBackToOrder">بازگشت</string>
+    <string name="FSearchAll">جستجو در همه</string>
+
 </resources>

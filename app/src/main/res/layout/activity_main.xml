@@ -587,6 +587,22 @@
                 android:text="@string/SubmitOrder"
                 app:cornerRadius="25sp" />
         </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <Button
+                android:id="@+id/searchOrder"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="25dp"
+                android:layout_span="4"
+                android:backgroundTint="#6A8EC3"
+                android:text="@string/SearchOrder"
+                app:cornerRadius="25sp" />
+        </TableRow>
     </TableLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
