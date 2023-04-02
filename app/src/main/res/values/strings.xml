@@ -41,10 +41,12 @@
     <string name="SearchAll">Search All</string>
 
 
-
-
     <string name="EditButton">Edit Order</string>
     <string name="DeleteOrder">Delete Order</string>
 
+
+    <string name="UpdateOrderButton">Update Order</string>
+    <string name="BackToOrderReview">Back to Order Review</string>
+    <string name="UpdateOrderInformation">Update Your Order Below:</string>
 
 </resources>

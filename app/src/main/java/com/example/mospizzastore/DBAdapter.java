@@ -120,7 +120,7 @@ public class DBAdapter {
 
     /** getting a single order from the orders table */
     public Cursor getOrder(long order_id) throws SQLException {
-        Cursor cursor = db.query(true, DATABASE_TABLE, new String[]{KEY_ROWID,KEY_NAME,KEY_ADDRESS,
+        Cursor cursor = db.query(true, DATABASE_TABLE, new String[] {KEY_ROWID,KEY_NAME,KEY_ADDRESS,
                 KEY_PHONE,KEY_TOPPINGS,KEY_SIZE},KEY_ROWID + "=" + order_id, null, null, null, null, null);
 
         if(cursor != null) {
@@ -137,11 +137,11 @@ public class DBAdapter {
         c_values.put(KEY_NAME, c_name);
         c_values.put(KEY_ADDRESS, c_address);
         c_values.put(KEY_PHONE, c_phone);
+        c_values.put(KEY_TOPPINGS, toppings);
+        c_values.put(KEY_SIZE, size);
 
-        return db.update(DATABASE_TABLE, c_values, KEY_ROWID + "=" + order_id, null) > 0;
+        return db.update(DATABASE_TABLE, c_values, KEY_ROWID + " = " + "'" + order_id + "'", null) > 0;
     };
-
-
 
 }; /* END OF ADAPTER CLASS */
 

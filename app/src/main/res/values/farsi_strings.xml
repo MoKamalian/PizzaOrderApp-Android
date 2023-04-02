@@ -26,4 +26,10 @@
     <string name="FBackToOrder">بازگشت</string>
     <string name="FSearchAll">جستجو در همه</string>
 
+    <string name="FUpdateOrderButton">سفارش به روز رسانی</string>
+    <string name="FUpdateOrderInformation">سفارش خود را در زیر به روز کنید</string>
+    <string name="FBackToOrderReview">سفارش خود را در زیر به روز کنید:</string>
+
+
+
 </resources>

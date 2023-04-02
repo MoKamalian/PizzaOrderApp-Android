@@ -102,6 +102,10 @@ public class MainActivity extends AppCompatActivity {
     /** order search button */
     private Button order_search;
 
+    /** the minimum and maximum number of toppings that must be chosen */
+    private static final int TOPPINGS_MAX = 3;
+    private static final int TOPPINGS_MIN = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -114,7 +118,7 @@ public class MainActivity extends AppCompatActivity {
         change_lang_switch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton button_view, boolean is_checked) {
-                shared_preferences = getPreferences(MODE_PRIVATE);
+                shared_preferences = getSharedPreferences(LANGUAGE_PREFERENCE, MODE_PRIVATE);
                 SharedPreferences.Editor editor = shared_preferences.edit();
                 if(is_checked) {
                     LANGUAGE = "FARSI";
@@ -125,13 +129,13 @@ public class MainActivity extends AppCompatActivity {
                     changeLanguage(LANGUAGE);
                     editor.putString(LANGUAGE_PREFERENCE, LANGUAGE);
                 }
-                editor.apply();
+                editor.commit();
             }
         });
 
 
         /** getting the saved language setting */
-        shared_preferences = getPreferences(MODE_PRIVATE);
+        shared_preferences = getSharedPreferences(LANGUAGE_PREFERENCE, MODE_PRIVATE);
         LANGUAGE = shared_preferences.getString(LANGUAGE_PREFERENCE, "ENGLISH");
         changeLanguage(LANGUAGE);
 
@@ -150,10 +154,11 @@ public class MainActivity extends AppCompatActivity {
                     clearOrderScreen();
                     Toast order = Toast.makeText(MainActivity.this, "Order Submitted", Toast.LENGTH_LONG);
                     order.show();
+                    topping_count = 0;
                 } else {
                     /** if there are no toppings, customer info is missing, or size is
                      * not selected */
-                    Toast pop = Toast.makeText(MainActivity.this, "Missing info!", Toast.LENGTH_LONG);
+                    Toast pop = Toast.makeText(MainActivity.this, "Missing info!/Need more toppings!", Toast.LENGTH_LONG);
                     pop.show();
                 }
             };
@@ -164,6 +169,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(MainActivity.this, OrdersActivity.class);
+                i.putExtra(LANGUAGE_PREFERENCE, LANGUAGE);
+
                 startActivity(i);
             };
         });
@@ -175,7 +182,7 @@ public class MainActivity extends AppCompatActivity {
     /** simple utility function to change the topping count display */
     private void changeCountDisplay(TextView t, boolean add, String topping_key) {
         if (add) {
-            if(topping_count >= 3) {
+            if(topping_count >= TOPPINGS_MAX) {
                 Toast pop = Toast.makeText(this, "Max 3 toppings!!", Toast.LENGTH_LONG);
                 pop.show();
                 return;
@@ -190,7 +197,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         } else {
-            if(topping_count <= 0 || t.getText().toString().equals("0")) {
+            if(topping_count <= TOPPINGS_MIN || t.getText().toString().equals("0")) {
                 Toast pop = Toast.makeText(this, "Cant have less than zero toppings!", Toast.LENGTH_LONG);
                 pop.show();
                 return;
@@ -204,7 +211,6 @@ public class MainActivity extends AppCompatActivity {
             toppings_ordered.put(topping_key, toppings_ordered.get(topping_key) - 1);
 
         }
-
     };
 
     /** Toppings button listener */
@@ -376,7 +382,7 @@ public class MainActivity extends AppCompatActivity {
         amount_donair = findViewById(R.id.amountDonair);
 
         /** submit order button */
-        submit_order = findViewById(R.id.submitOrder);
+        submit_order = findViewById(R.id.updateOrder);
 
         /** search for an order */
         order_search = findViewById(R.id.searchOrder);
@@ -403,7 +409,7 @@ public class MainActivity extends AppCompatActivity {
 
         enter_info_label = findViewById(R.id.enterPizzaInfoLabel);
 
-    };
+    }; /* END OF LINK ALL WIDGETS METHOD*/
 
     /** setting the on click listener for the add and remove buttons */
     private void linkAddRemoveBtns() {
@@ -442,7 +448,7 @@ public class MainActivity extends AppCompatActivity {
     /** checks if at minimum one topping has been ordered, customer info
      * fields are filled out, and pizza size has been selected */
     private boolean checkOrder() {
-        if(checkToppings() && checkCustomerInfo() && checkSizeIsSelected()) {
+        if(checkToppings() && checkCustomerInfo() && checkSizeIsSelected() && (topping_count == TOPPINGS_MAX)) {
             return true;
         } else {
             return false;

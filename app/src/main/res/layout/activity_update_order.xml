@@ -4,58 +4,64 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#DCCF92"
+    android:background="#FFFFFF"
     android:orientation="horizontal"
-    tools:context=".MainActivity">
+    tools:context=".UpdateOrderActivity">
 
     <TableLayout
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        android:background="#A1B8E6"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:background="#A1B8E6">
 
-            <TextView
-                android:id="@+id/mosPizzaLabel"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:layout_span="2"
-                android:text="@string/MosPizza"
-                android:textColor="#A54545"
-                android:textSize="24sp"
-                android:textStyle="bold" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:id="@+id/enterPizzaInfoLabel"
+            <Button
+                android:id="@+id/backToOrderReview"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
-                android:text="@string/EnterInfoLabel"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="25dp"
+                android:layout_span="4"
+                android:backgroundTint="#42638C"
+                android:text="@string/BackToOrderReview"
+                app:cornerRadius="25sp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#A1B8E6">
+
+            <TextView
+                android:id="@+id/enterUpdateOrderInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:text="@string/UpdateOrderInformation"
                 android:textColor="#000000"
                 android:textSize="16sp" />
 
-            <Switch
-                android:id="@+id/languageChangeSwitch"
+            <TextView
+                android:id="@+id/orderID_display"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="50dp"
-                android:layout_marginRight="50dp"
-                android:text="@string/LanguageToggleLabel"
-                android:textSize="16sp"
+                android:text="TextView"
+                android:textColor="#000000"
+                android:textSize="20sp"
                 android:textStyle="bold" />
 
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:background="#A1B8E6">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -64,7 +70,7 @@
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/removeButtonSausage"
+                    android:id="@+id/removeButtonSausage2"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1.5"
@@ -75,7 +81,7 @@
                     app:cornerRadius="0dp" />
 
                 <TextView
-                    android:id="@+id/amountSausage"
+                    android:id="@+id/amountSausage2"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -89,7 +95,7 @@
                     android:textStyle="bold" />
 
                 <Button
-                    android:id="@+id/addButtonSausage"
+                    android:id="@+id/addButtonSausage2"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1.5"
@@ -101,7 +107,7 @@
             </LinearLayout>
 
             <TextView
-                android:id="@+id/toppingSausage"
+                android:id="@+id/toppingSausage2"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="10dp"
@@ -116,7 +122,8 @@
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:background="#A1B8E6">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -125,7 +132,7 @@
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/removeButtonPeperoni"
+                    android:id="@+id/removeButtonPeperoni2"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1.5"
@@ -136,7 +143,7 @@
                     app:cornerRadius="0dp" />
 
                 <TextView
-                    android:id="@+id/amountPeperoni"
+                    android:id="@+id/amountPeperoni2"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -150,7 +157,7 @@
                     android:textStyle="bold" />
 
                 <Button
-                    android:id="@+id/addButtonPeperoni"
+                    android:id="@+id/addButtonPeperoni2"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1.5"
@@ -162,7 +169,7 @@
             </LinearLayout>
 
             <TextView
-                android:id="@+id/toppingPeperoni"
+                android:id="@+id/toppingPeperoni2"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="10dp"
@@ -177,7 +184,8 @@
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:background="#A1B8E6">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -186,7 +194,7 @@
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/removeButtonBacon"
+                    android:id="@+id/removeButtonBacon2"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1.5"
@@ -197,7 +205,7 @@
                     app:cornerRadius="0dp" />
 
                 <TextView
-                    android:id="@+id/amountBacon"
+                    android:id="@+id/amountBacon2"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -211,7 +219,7 @@
                     android:textStyle="bold" />
 
                 <Button
-                    android:id="@+id/addButtonBacon"
+                    android:id="@+id/addButtonBacon2"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1.5"
@@ -223,7 +231,7 @@
             </LinearLayout>
 
             <TextView
-                android:id="@+id/toppingBacon"
+                android:id="@+id/toppingBacon2"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="10dp"
@@ -238,7 +246,8 @@
 
         <TableRow
             android:layout_width="150dp"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:background="#A1B8E6">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -247,7 +256,7 @@
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/removeButtonMushroom"
+                    android:id="@+id/removeButtonMushroom2"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1.5"
@@ -258,7 +267,7 @@
                     app:cornerRadius="0dp" />
 
                 <TextView
-                    android:id="@+id/amountMushroom"
+                    android:id="@+id/amountMushroom2"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -272,7 +281,7 @@
                     android:textStyle="bold" />
 
                 <Button
-                    android:id="@+id/addButtonMushroom"
+                    android:id="@+id/addButtonMushroom2"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1.5"
@@ -284,7 +293,7 @@
             </LinearLayout>
 
             <TextView
-                android:id="@+id/toppingMushroom"
+                android:id="@+id/toppingMushroom2"
                 android:layout_width="201dp"
                 android:layout_height="match_parent"
                 android:layout_marginTop="10dp"
@@ -301,7 +310,8 @@
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:background="#A1B8E6">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -310,7 +320,7 @@
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/removeButtonChicken"
+                    android:id="@+id/removeButtonChicken2"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1.5"
@@ -321,7 +331,7 @@
                     app:cornerRadius="0dp" />
 
                 <TextView
-                    android:id="@+id/amountChicken"
+                    android:id="@+id/amountChicken2"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -335,7 +345,7 @@
                     android:textStyle="bold" />
 
                 <Button
-                    android:id="@+id/addButtonChicken"
+                    android:id="@+id/addButtonChicken2"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1.5"
@@ -347,7 +357,7 @@
             </LinearLayout>
 
             <TextView
-                android:id="@+id/toppingChicken"
+                android:id="@+id/toppingChicken2"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="10dp"
@@ -363,7 +373,8 @@
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:background="#A1B8E6">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -372,7 +383,7 @@
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/removeButtonSalami"
+                    android:id="@+id/removeButtonSalami2"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1.5"
@@ -383,7 +394,7 @@
                     app:cornerRadius="0dp" />
 
                 <TextView
-                    android:id="@+id/amountSalami"
+                    android:id="@+id/amountSalami2"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -397,7 +408,7 @@
                     android:textStyle="bold" />
 
                 <Button
-                    android:id="@+id/addButtonSalami"
+                    android:id="@+id/addButtonSalami2"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1.5"
@@ -409,7 +420,7 @@
             </LinearLayout>
 
             <TextView
-                android:id="@+id/toppingSalami"
+                android:id="@+id/toppingSalami2"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="10dp"
@@ -425,7 +436,8 @@
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:background="#A1B8E6">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -434,7 +446,7 @@
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/removeButtonDonair"
+                    android:id="@+id/removeButtonDonair2"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1.5"
@@ -445,7 +457,7 @@
                     app:cornerRadius="0dp" />
 
                 <TextView
-                    android:id="@+id/amountDonair"
+                    android:id="@+id/amountDonair2"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -459,7 +471,7 @@
                     android:textStyle="bold" />
 
                 <Button
-                    android:id="@+id/addButtonDonair"
+                    android:id="@+id/addButtonDonair2"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1.5"
@@ -471,7 +483,7 @@
             </LinearLayout>
 
             <TextView
-                android:id="@+id/toppingDonair"
+                android:id="@+id/toppingDonair2"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="10dp"
@@ -487,17 +499,18 @@
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:background="#A1B8E6">
 
             <RadioGroup
-                android:id="@+id/pizzaSizeGroup"
+                android:id="@+id/pizzaSizeGroup2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_span="4"
                 android:orientation="horizontal">
 
                 <RadioButton
-                    android:id="@+id/sizeSmall"
+                    android:id="@+id/sizeSmall2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
@@ -506,7 +519,7 @@
                     android:textStyle="bold" />
 
                 <RadioButton
-                    android:id="@+id/sizeMedium"
+                    android:id="@+id/sizeMedium2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -514,7 +527,7 @@
                     android:textStyle="bold" />
 
                 <RadioButton
-                    android:id="@+id/sizeLarge"
+                    android:id="@+id/sizeLarge2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="25dp"
@@ -527,10 +540,11 @@
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:background="#FFFFFF">
 
             <EditText
-                android:id="@+id/customerName"
+                android:id="@+id/customerName2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
@@ -544,10 +558,11 @@
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:background="#FFFFFF">
 
             <EditText
-                android:id="@+id/customerPhone"
+                android:id="@+id/customerPhone2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
@@ -559,10 +574,11 @@
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:background="#FFFFFF">
 
             <EditText
-                android:id="@+id/customerAddress"
+                android:id="@+id/customerAddress2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
@@ -574,7 +590,8 @@
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:background="#A1B8E6">
 
             <Button
                 android:id="@+id/updateOrder"
@@ -584,25 +601,10 @@
                 android:layout_marginRight="25dp"
                 android:layout_span="4"
                 android:backgroundTint="#C36A6A"
-                android:text="@string/SubmitOrder"
+                android:text="@string/UpdateOrderButton"
                 app:cornerRadius="25sp" />
         </TableRow>
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" >
-
-            <Button
-                android:id="@+id/searchOrder"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="25dp"
-                android:layout_span="4"
-                android:backgroundTint="#6A8EC3"
-                android:text="@string/SearchOrder"
-                app:cornerRadius="25sp" />
-        </TableRow>
     </TableLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

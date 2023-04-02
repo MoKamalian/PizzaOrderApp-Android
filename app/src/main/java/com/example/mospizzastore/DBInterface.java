@@ -24,8 +24,6 @@ import java.util.Arrays;
 
 public class DBInterface {
 
-
-
     /** database adapter */
     private DBAdapter db_adapter;
 
@@ -52,8 +50,11 @@ public class DBInterface {
 
     /** Changes an order made; if order does not exit an
      *  error message is returned */
-    public void changeOrder() {
-
+    public void changeOrder(long order_id, String c_name, String c_address, String c_phone, String toppings,
+                            String size) {
+        this.db_adapter.open();
+        this.db_adapter.updateOrder(order_id, c_name, c_address, c_phone, toppings, size);
+        this.db_adapter.close();
     };
 
     /** look up and return a specific order in the database under a name */

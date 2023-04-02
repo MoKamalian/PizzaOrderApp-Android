@@ -22,9 +22,12 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.LayoutInflater;
 import android.content.Context;
+import android.content.Intent;
+
 import android.widget.TextView;
 import android.widget.Button;
-
+import android.widget.LinearLayout;
+import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -69,19 +72,32 @@ public class OrdersRecycleView extends RecyclerView.Adapter<OrdersRecycleView.My
         MyViewHolder holder = new MyViewHolder(view, new MyClickListener() {
             @Override
             public void onEdit(int p) {
-                // editing an order
+                /* updating the order here */
+                Intent I = new Intent(context, UpdateOrderActivity.class);
+                I.putExtra("id", String.valueOf(ids.get(p)));
+                I.putExtra("name", String.valueOf(names.get(p)));
+                I.putExtra("address", String.valueOf(addresses.get(p)));
+                I.putExtra("phone", String.valueOf(phones.get(p)));
+                I.putExtra("firstTopping", String.valueOf(first_top.get(p)));
+                I.putExtra("secondTopping", String.valueOf(second_top.get(p)));
+                I.putExtra("thirdTopping", String.valueOf(third_top.get(p)));
+                I.putExtra("size", String.valueOf(sizes.get(p)));
+
+                context.startActivity(I);
+
             };
 
             @Override
             public void onDelete(int p) {
-
-
+                /* deleting an order here */
                 db_interface.deleteOrder(ids.get(p));
+                notifyItemRemoved(p);
                 removeOrder(p);
 
             };
 
         });
+
 
         return holder;
     };
@@ -96,6 +112,15 @@ public class OrdersRecycleView extends RecyclerView.Adapter<OrdersRecycleView.My
         holder.topping_two.setText(String.valueOf(second_top.get(position)));
         holder.topping_three.setText(String.valueOf(third_top.get(position)));
         holder.size.setText(String.valueOf(sizes.get(position)));
+
+        /* going to activity to edit the order */
+        holder.order_row.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            };
+        });
+
     };
 
     @Override
@@ -120,6 +145,8 @@ public class OrdersRecycleView extends RecyclerView.Adapter<OrdersRecycleView.My
     public class MyViewHolder extends RecyclerView.ViewHolder implements OnClickListener {
 
         MyClickListener listener;
+
+        private LinearLayout order_row;
 
         /** edit and delete order buttons */
         private Button delete_order;
@@ -146,6 +173,9 @@ public class OrdersRecycleView extends RecyclerView.Adapter<OrdersRecycleView.My
             topping_two = itemView.findViewById(R.id.toppingTwo);
             topping_three = itemView.findViewById(R.id.toppingThree);
             size = itemView.findViewById(R.id.orderSize);
+
+            /* the LinearLayout which holds the order row */
+            order_row = itemView.findViewById(R.id.orderRowLayout);
 
             /** edit and delete order buttons */
             delete_order = itemView.findViewById(R.id.deleteOrderButton);
