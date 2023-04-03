@@ -554,7 +554,8 @@
                 android:layout_marginRight="25dp"
                 android:layout_span="4"
                 android:ems="10"
-                android:inputType="phone" />
+                android:inputType="phone"
+                android:textAlignment="textStart" />
         </TableRow>
 
         <TableRow

@@ -164,6 +164,8 @@ public class OrdersRecycleView extends RecyclerView.Adapter<OrdersRecycleView.My
 
         public MyViewHolder(@NonNull View itemView, MyClickListener listener) {
             super(itemView);
+
+
             order_id = itemView.findViewById(R.id.order_id);
             customer_name = itemView.findViewById(R.id.Cname);
             customer_phone = itemView.findViewById(R.id.Cphone);
@@ -180,6 +182,7 @@ public class OrdersRecycleView extends RecyclerView.Adapter<OrdersRecycleView.My
             /** edit and delete order buttons */
             delete_order = itemView.findViewById(R.id.deleteOrderButton);
             edit_order = itemView.findViewById(R.id.editOrderButton);
+            changeLang(MainActivity.LANGUAGE);
 
             this.listener = listener;
 
@@ -202,6 +205,16 @@ public class OrdersRecycleView extends RecyclerView.Adapter<OrdersRecycleView.My
             }
         };
 
+        /** for language change settings */
+        private void changeLang(String lang) {
+            if(lang.equals("ENGLISH")) {
+                delete_order.setText(R.string.DeleteOrder);
+                edit_order.setText(R.string.EditButton);
+            } else if(lang.equals("FARSI")) {
+                delete_order.setText(R.string.FDeleteOrder);
+                edit_order.setText(R.string.FEditOrder);
+            }
+        };
 
     }; /* ---- end view holder class ---- */
 

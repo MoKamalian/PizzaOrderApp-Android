@@ -28,6 +28,7 @@ public class DBAdapter {
     public static final String KEY_PHONE = "customerPhoneNumber";
     public static final String KEY_TOPPINGS = "toppings";
     public static final String KEY_SIZE = "size";
+    public static final String KEY_TIME = "timeStamp";
 
     public static final String TAG = "DBAdapter";
 
@@ -42,7 +43,7 @@ public class DBAdapter {
                 + "customerName TEXT not null,customerAddress TEXT not null,"
                 + "customerPhoneNumber TEXT not null,toppings TEXT not null,"
                 + "size TEXT not null,"
-                + "timeStamp DATETIME DEFAULT CURRENT_TIME)";
+                + "timeStamp DATETIME DEFAULT CURRENT_TIMESTAMP)";
 
 
     private final Context context;
