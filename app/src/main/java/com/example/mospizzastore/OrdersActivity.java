@@ -34,7 +34,6 @@ public class OrdersActivity extends AppCompatActivity {
 
     /** button that takes you back to the orders screen */
     private Button back_button;
-    private ImageButton do_search_btn;
     private Button search_for_all;
 
     /** the search field used to grab name to query for orders */
@@ -49,6 +48,9 @@ public class OrdersActivity extends AppCompatActivity {
         setContentView(R.layout.activity_orders);
 
         linkAll();
+
+        /** change the language setting */
+        changeLang(MainActivity.LANGUAGE);
 
         back_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -88,7 +90,6 @@ public class OrdersActivity extends AppCompatActivity {
                         recycler_view.setAdapter(custom_recycle_view);
                         recycler_view.setLayoutManager(new LinearLayoutManager(OrdersActivity.this));
 
-
                     }
 
                 }
@@ -96,6 +97,17 @@ public class OrdersActivity extends AppCompatActivity {
         });
 
 
+    };
+
+    /** changes language displayed for UI elements */
+    private void changeLang(String lang) {
+        if(lang.equals("ENGLISH")) {
+            back_button.setText(R.string.BackToOrder);
+            search_for_all.setText(R.string.SearchAll);
+        } else if(lang.equals("FARSI")) {
+            back_button.setText(R.string.FBackToOrder);
+            search_for_all.setText(R.string.FSearchAll);
+        }
     };
 
 
@@ -136,7 +148,6 @@ public class OrdersActivity extends AppCompatActivity {
     /** linking all the views */
     private void linkAll() {
         back_button = findViewById(R.id.backButton);
-        do_search_btn = findViewById(R.id.doSearch);
         search_for_all = findViewById(R.id.searchAll);
 
         field_name = findViewById(R.id.fieldName);

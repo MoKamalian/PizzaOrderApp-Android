@@ -37,10 +37,12 @@ public class DBAdapter {
 
     /** creation of the database command */
     private static final String DATABASE_CREATE =
-            "CREATE TABLE Orders(_id INTEGER PRIMARY KEY AUTOINCREMENT,"
-            + "customerName TEXT not null,customerAddress TEXT not null,"
-            + "customerPhoneNumber TEXT not null,toppings TEXT not null,"
-            + "size TEXT not null)";
+            "CREATE TABLE Orders("
+                + "_id INTEGER PRIMARY KEY AUTOINCREMENT,"
+                + "customerName TEXT not null,customerAddress TEXT not null,"
+                + "customerPhoneNumber TEXT not null,toppings TEXT not null,"
+                + "size TEXT not null,"
+                + "timeStamp DATETIME DEFAULT CURRENT_TIME)";
 
 
     private final Context context;
